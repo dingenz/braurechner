@@ -1,0 +1,20 @@
+CACHE MANIFEST
+
+# 2015-04-05 20:00:00
+
+CACHE:
+/css/normalize.css
+/css/jquery.mobile.structure-1.4.5.min.css
+/css/jquery.mobile.icons.min.css
+/css/jquery.mobile.braurechner-theme.min.css
+/css/main.css
+/js/jquery-2.1.3.min.js
+/js/jquery.mobile-1.4.5.min.js
+/js/Smooth-0.1.7.js
+/js/functions.js
+/js/main.js
+/img/logo.svg
+/css/images/ajax-loader.gif
+
+NETWORK:
+*

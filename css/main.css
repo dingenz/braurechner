@@ -1,0 +1,210 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: "Open Sans";
+	src: local("Open Sans"), local("OpenSans"), url("/fonts/open-sans.woff2") format("woff2"), url("/fonts/open-sans.woff") format("woff");
+	font-style: normal;
+	font-weight: 400;
+}
+@font-face {
+	font-family: "Open Sans";
+	src: local("Open Sans Bold"), local("OpenSans-Bold"), url("/fonts/open-sans-bold.woff2") format("woff2"), url("/fonts/open-sans-bold.woff") format("woff");
+	font-style: normal;
+	font-weight: 700;
+}
+body {
+	font-family: "Open Sans", sans-serif;
+}
+.ui-btn {
+	font-family: "Open Sans", sans-serif;
+}
+header .br-logo {
+	padding-left: 28px;
+	background: url("/img/logo.svg") top left no-repeat;
+	position: relative;
+	top: -2px;
+}
+aside {
+	padding: 10px 20px;
+}
+footer p {
+	font-weight: normal;
+	text-align: center;
+	margin: 0;
+}
+[data-role="page"]>section {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 10px 20px;
+}
+h1,
+h2 {
+	font-weight: normal;
+}
+h3 {
+	font-weight: normal;
+	margin-bottom: 0;
+	border-bottom: 1px solid #ddd;
+	color: #008080;
+}
+nav form {
+	margin-top: 2.5em;
+}
+[data-role="page"] form {
+	margin: 1em 0 2.5em 0;
+}
+[data-role="page"] form>section {
+	margin-bottom: 1.5em;
+}
+[data-role="page"] form .container {
+	margin-bottom: 1em;
+}
+[data-role="page"] form .container label.ui-btn.ui-corner-all{
+	border-top-left-radius: .6em;
+	border-top-right-radius: .6em;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-color: #ccc;
+	margin-bottom: 0;
+}
+[data-role="page"] form .container div.ui-corner-all {
+	margin-top: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+[data-role="page"] form .ui-input-text input.value-initial {
+	color:#999;
+}
+[data-role="page"] form .ui-input-text input.value-input{
+	color: #333;
+}
+[data-role="page"] form .ui-input-text input.value-calculate {
+	color: #008080;
+}
+[data-role="page"] form .ui-input-text input.value-unknown {
+	color: #780000;
+}
+[data-role="page"] dl {
+	margin-top: 0;
+}
+[data-role="page"] dt {
+	font-weight: bold;
+	text-align: center;
+	padding: .7em 1em .7em 2.5em;
+	margin: .5em 0 0 0;
+	line-height: 1.3em;
+}
+[data-role="page"] dd {
+	margin: 0;
+	padding: .4em 0 .4em .4em;
+	border: 1px solid #ddd;
+	border-radius: .31em;
+	background-clip: padding-box;
+	line-height: 1.5em;
+}
+[data-role="page"] dd.value-initial {
+	background-color: #fff;
+	color:#999;
+}
+[data-role="page"] dd.value-input{
+	background-color: #fff;
+	color: #333;
+}
+[data-role="page"] dd.value-calculate {
+	background-color: #e2ffff;
+	color: #008080;
+}
+[data-role="page"] dd.value-unknown {
+	background-color: #fee;
+	color: #780000;
+}
+/* options */
+.optionBrixPlato-brix .container-stammwuerzePlato,
+.optionBrixPlato-brix .container-restextraktPlato,
+.optionBrixPlato-brix #optionSpindelKorrektur,
+.optionBrixPlato-brix .container-stammwuerzePlatoVorKorrektur,
+.optionBrixPlato-brix .container-stammwuerzeTemperatur,
+.optionBrixPlato-brix .container-restextraktPlatoVorKorrektur,
+.optionBrixPlato-brix .container-restextraktTemperatur,
+.optionBrixPlato-plato .container-stammwuerzeBrix,
+.optionBrixPlato-plato .container-restextraktBrix,
+.optionBrixPlato-plato #brixPlatoVerhaeltnis,
+.optionBrixPlato-plato.optionSpindelKorrekturSW-y .container-stammwuerzePlato,
+.optionBrixPlato-plato.optionSpindelKorrekturSW-n .container-stammwuerzePlatoVorKorrektur,
+.optionBrixPlato-plato.optionSpindelKorrekturSW-n .container-stammwuerzeTemperatur,
+.optionBrixPlato-plato.optionSpindelKorrekturSW-n .label-stammwuerzePlato,
+.optionBrixPlato-plato.optionSpindelKorrekturSW-n dd.stammwuerzePlato,
+.optionBrixPlato-plato.optionSpindelKorrekturRE-y .container-restextraktPlato,
+.optionBrixPlato-plato.optionSpindelKorrekturRE-n .container-restextraktPlatoVorKorrektur,
+.optionBrixPlato-plato.optionSpindelKorrekturRE-n .container-restextraktTemperatur,
+.optionBrixPlato-plato.optionSpindelKorrekturRE-n .label-restextraktPlato,
+.optionBrixPlato-plato.optionSpindelKorrekturRE-n dd.restextraktPlato,
+.label-einheitenC2F,
+dd.einheitenC2F,
+.label-einheitenC2K,
+dd.einheitenC2K,
+.label-einheitenF2C,
+dd.einheitenF2C,
+.label-einheitenK2C,
+dd.einheitenK2C,
+.label-einheitenP2SG,
+dd.einheitenP2SG,
+.label-einheitenSG2P,
+dd.einheitenSG2P,
+.optionEinheiten-C2F .label-einheitenFaktor,
+.optionEinheiten-C2F dd.einheitenFaktor,
+.optionEinheiten-C2K .label-einheitenFaktor,
+.optionEinheiten-C2K dd.einheitenFaktor,
+.optionEinheiten-F2C .label-einheitenFaktor,
+.optionEinheiten-F2C dd.einheitenFaktor,
+.optionEinheiten-K2C .label-einheitenFaktor,
+.optionEinheiten-K2C dd.einheitenFaktor,
+.optionEinheiten-C2F .label-einheitenAusgabe,
+.optionEinheiten-C2F dd.einheitenAusgabe,
+.optionEinheiten-C2K .label-einheitenAusgabe,
+.optionEinheiten-C2K dd.einheitenAusgabe,
+.optionEinheiten-F2C .label-einheitenAusgabe,
+.optionEinheiten-F2C dd.einheitenAusgabe,
+.optionEinheiten-K2C .label-einheitenAusgabe,
+.optionEinheiten-K2C dd.einheitenAusgabe,
+.optionEinheiten-P2SG .label-einheitenAusgabe,
+.optionEinheiten-P2SG dd.einheitenAusgabe,
+.optionEinheiten-SG2P .label-einheitenAusgabe,
+.optionEinheiten-SG2P dd.einheitenAusgabe,
+.container-einheitenFaktor {
+	display: none;
+}
+.optionEinheiten-C2F .label-einheitenC2F,
+.optionEinheiten-C2F dd.einheitenC2F,
+.optionEinheiten-C2K .label-einheitenC2K,
+.optionEinheiten-C2K dd.einheitenC2K,
+.optionEinheiten-F2C .label-einheitenF2C,
+.optionEinheiten-F2C dd.einheitenF2C,
+.optionEinheiten-K2C .label-einheitenK2C ,
+.optionEinheiten-K2C dd.einheitenK2C,
+.optionEinheiten-P2SG .label-einheitenP2SG ,
+.optionEinheiten-P2SG dd.einheitenP2SG,
+.optionEinheiten-SG2P .label-einheitenSG2P ,
+.optionEinheiten-SG2P dd.einheitenSG2P {
+	display: block;
+}
+
+@media (max-width: 90em) {
+	/* open panels on swipe */
+	body :not(input):not(textarea) {
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		-o-user-select: none;
+		user-select: none;
+	}
+}
+@media (min-width: 90em) {
+	/* disable "dismiss" on wide viewports */
+	.ui-panel-dismiss {
+		display: none;
+	}
+	[data-role="page"]>section {
+		margin: 0 17em;
+	}
+}

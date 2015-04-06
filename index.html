@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de" manifest="/manifest.appcache">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="application-name" content="Braurechner"/>
+		<meta name="author" content="Thorsten Schleppi"/>
+		<meta name="description" content="Web-App für verschiedene Berechnungen beim Haus- und Hobbybrauen." />
+		<meta name="keywords" content="Braurechner,Rechner,Berechnung,Brauer,Hobbybrauer,Hausbrauer,Bier,Plato,Brix,Alkohol,Alkoholgehalt,Vergärungsgrad,Endvergärungsgrad,Sudhausausbeute,Mischkreuz,Dreisatz,Smartphone,Android,iPhone"/>
+		<meta name="msapplication-TileColor" content="#333333"/>
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png"/>
+		<meta name="theme-color" content="#333333"/>
+		<title>Braurechner</title>
+		<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"/>
+		<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"/>
+		<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"/>
+		<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"/>
+		<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"/>
+		<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"/>
+		<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"/>
+		<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"/>
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"/>
+		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"/>
+		<link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194"/>
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/>
+		<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192"/>
+		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"/>
+		<link rel="manifest" href="/manifest.json"/>
+		<link rel="stylesheet" href="/css/normalize.css"/><!-- v3.0.2 -->
+		<link rel="stylesheet" href="/css/jquery.mobile.structure-1.4.5.min.css"/>
+		<link rel="stylesheet" href="/css/jquery.mobile.icons.min.css"/>
+		<link rel="stylesheet" href="/css/jquery.mobile.braurechner-theme.min.css"/>
+		<link rel="stylesheet" href="/css/main.css"/>
+		<link rel="author" href="//thorsten-schleppi.de" title="Autor"/>
+		<!--[if lt IE 9]>
+			<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+		<![endif]-->
+		<!--[if gte IE 9]><!-->
+			<script src="/js/jquery-2.1.3.min.js"></script>
+		<!--<![endif]-->
+		<script src="/js/jquery.mobile-1.4.5.min.js"></script>
+		<script src="/js/Smooth-0.1.7.js"></script>
+		<script src="/js/functions.js"></script>
+		<script src="/js/main.js"></script>
+	</head>
+	<body>
+		<header data-role="header">
+			<h1><span class="br-logo"></span>Braurechner</h1>
+			<a href="#panel-menu" data-icon="bars" data-iconpos="notext">Menü</a>
+			<a href="#panel-options" data-icon="gear" data-iconpos="notext">Einstellungen</a>
+		</header>
+		<nav id="panel-menu" data-role="panel">
+			<ul data-role="listview">
+				<li data-icon="delete"><a href="#" data-rel="close">Menü schließen</a></li>
+				<li data-icon="home"><a href="#page-home">Startseite</a></li>
+			</ul>
+		</nav>
+		<nav id="panel-options" data-role="panel">
+			<ul data-role="listview">
+				<li><a href="#" class="ui-btn ui-btn-icon-left ui-icon-delete" data-rel="close">Menü schließen</a></li>
+			</ul>
+			<form>
+				<ul data-role="listview">
+					<li>
+						<fieldset data-role="controlgroup">
+							<legend>Stammwürze und Restextrakt angeben in:</legend>
+							<input id="radio-optionBrixPlato-brix" name="radio-optionBrixPlato" value="brix" type="radio"/>
+							<label for="radio-optionBrixPlato-brix">Brix</label>
+							<input id="radio-optionBrixPlato-plato" name="radio-optionBrixPlato" value="plato" type="radio"/>
+							<label for="radio-optionBrixPlato-plato">Plato</label>
+						</fieldset>
+					</li>
+					<li id="brixPlatoVerhaeltnis">
+						<label for="brixPlatoVerhaeltnis-0">Brix/Plato-Verhältnis</label>
+						<input id="brixPlatoVerhaeltnis-0" class="brixPlatoVerhaeltnis" type="number" data-theme="b"/>
+					</li>
+					<li id="optionSpindelKorrektur">
+						<fieldset data-role="controlgroup">
+							<legend>Spindel-Korrektur<br/><small>(geeicht bei 20 °C)</small>:</legend>
+							<input name="checkbox-optionSpindelKorrektur-sw" id="checkbox-optionSpindelKorrektur-sw" type="checkbox"/>
+							<label for="checkbox-optionSpindelKorrektur-sw">Stammwürze</label>
+							<input name="checkbox-optionSpindelKorrektur-re" id="checkbox-optionSpindelKorrektur-re" type="checkbox"/>
+							<label for="checkbox-optionSpindelKorrektur-re">Restextrakt</label>
+						</fieldset>
+					</li>
+					<li>
+						<fieldset data-role="controlgroup">
+							<legend>Lokaler Speicher:</legend>
+							<button id="button-optionLocalStorage" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-recycle">Leeren</button>
+						</fieldset>
+					</li>
+				</ul>
+			</form>
+		</nav>
+		<div data-role="page" id="page-home">
+			<section>
+				<h2>Startseite</h2>
+				<p>
+					Der <strong>Braurechner</strong> ist eine frei nutzbare Web-App zur Berechnung verschiedener Kennzahlen, die beim Haus- und Hobbybrauen benötigt werden.
+				</p>
+				<section data-role="collapsible">
+					<h3>Über</h3>
+					<p>
+						Die App entstand als privates Projekt und soll nicht als Konkurrenz, sondern als (mobile) Ergänzung zu bestehenden Tools verstanden werden.
+					</p>
+					<p>
+						Voraussetzung zur Verwendung ist ein aktueller Browser mit aktiviertem JavaScript.<br/>
+						Die Web-App kann auf dem Smartphone analog zu einer Native-App genutzt werden, indem diese im Browsermenü zum Home-/Startbildschirm hinzugefügt wird.
+					</p>
+					<p>
+						Fehler, Kritik, Anregungen und Sonstiges gerne direkt <a href="//thorsten-schleppi.de/" target="_blank" rel="author" data-rel="external">an den Autor</a>.
+					</p>
+					<section>
+						<a href="#popupLizenz" data-rel="popup" class="ui-btn ui-btn-icon-left ui-icon-action ui-corner-all ui-shadow ui-btn-inline">MIT-Lizenz</a>
+						<div id="popupLizenz" data-role="popup" data-dismissible="false" data-overlay-theme="b" class="ui-content">
+							<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
+							<h4>MIT-Lizenz</h4>
+							<p>
+								<span class="copyright">© 2015</span> <span class="author" rel="author">Thorsten Schleppi</span>
+							</p>
+							<p>
+								Hiermit wird unentgeltlich jeder Person, die eine Kopie der Software und der zugehörigen Dokumentationen (die "Software") erhält, die Erlaubnis erteilt, sie uneingeschränkt zu benutzen, inklusive und ohne Ausnahme dem Recht, sie zu verwenden, kopieren, ändern, fusionieren, verlegen, verbreiten, unterlizenzieren und/oder zu verkaufen, und Personen, die diese Software erhalten, diese Rechte zu geben, unter den folgenden Bedingungen:
+							</p>
+							<p>
+								Der obige Urheberrechtsvermerk und dieser Erlaubnisvermerk sind in allen Kopien oder Teilkopien der Software beizulegen.
+							</p>
+							<p>
+								DIE SOFTWARE WIRD OHNE JEDE AUSDRÜCKLICHE ODER IMPLIZIERTE GARANTIE BEREITGESTELLT, EINSCHLIESSLICH DER GARANTIE ZUR BENUTZUNG FÜR DEN VORGESEHENEN ODER EINEM BESTIMMTEN ZWECK SOWIE JEGLICHER RECHTSVERLETZUNG, JEDOCH NICHT DARAUF BESCHRÄNKT. IN KEINEM FALL SIND DIE AUTOREN ODER COPYRIGHTINHABER FÜR JEGLICHEN SCHADEN ODER SONSTIGE ANSPRÜCHE HAFTBAR ZU MACHEN, OB INFOLGE DER ERFÜLLUNG EINES VERTRAGES, EINES DELIKTES ODER ANDERS IM ZUSAMMENHANG MIT DER SOFTWARE ODER SONSTIGER VERWENDUNG DER SOFTWARE ENTSTANDEN.
+							</p>
+						</div>
+					</section>
+				</section>
+				<section data-role="collapsible">
+					<h3>Benutzung und Legende</h3>
+					<ul>
+						<li>Berechnungen erfolgen automatisch bei Anpassungen der Parameter-Kennzahlen.</li>
+						<li>Ein Panel zur Navigation ist per Click auf das Menü-Symbol im Header aufrufbar (oben links).</li>
+						<li>Ein Panel zur Konfiguration ist per Click auf das Zahnrad-Symbol im Header aufrufbar (oben rechts).</li>
+					</ul>
+					<dl>
+						<dt class="value-initial">geladener Wert:</dt>
+						<dd class="value-initial">1234,56</dd>
+						<dt class="value-input">eingegeben Wert:</dt>
+						<dd class="value-input">1234,56</dd>
+						<dt class="value-calculate">berechneter Wert:</dt>
+						<dd class="value-calculate">1234,56</dd>
+						<dt class="value-unknown">unbekannter Wert:</dt>
+						<dd class="value-unknown">1234,56</dd>
+					</dl>
+				</section>
+				<section data-role="collapsible">
+					<h3>Weitere Informationen</h3>
+					<section>
+						<h4>Hobbybrauer-Basiswissen:</h4>
+						<ul>
+							<li><a href="//brauanleitung.de/">Brauanleitung</a></li>
+							<li><a href="//braumagazin.de/">brau!magazin</a></li>
+							<li><a href="//hobbybrauer.de/">Hobbybrauer-Forum</a></li>
+						</ul>
+					</section>
+					<section>
+						<h4>Rund um's Selbstgebraute:</h4>
+						<ul>
+							<li><a href="//brauerei.mueggelland.de/berechnungen.html">Brauerei Müggelland (Berechnungen, Rezepte (entwickeln))</a></li>
+							<li><a href="//brewrecipedeveloper.de/">Brew Recipe Developer (Rezepte entwickeln)</a></li>
+							<li><a href="//fabier.de/biercalcs.html">Fabier (Berechnungen)</a></li>
+							<li><a href="//www.joerum.de/kleiner-brauhelfer/doku.php">Kleiner Brauhelfer (Rezepte entwickeln)</a></li>
+							<li><a href="//maischemalzundmehr.de/">Maische, Malz &amp; Mehr (Berechnungen, Rezepte)</a></li>
+							<li><a href="//www.dunkelbrauer.de/Software/">Mash It (Brausteuerung)</a></li>
+							<li><a href="//netbeer.org/">Netbeer.org (Berechnungen)</a></li>
+							<li><a href="//www.fangobräu.de/web20mash.shtml">Web Mash (Brausteuerung)</a></li>
+						</ul>
+					</section>
+				</section>
+			</section>
+		</div>
+		<footer data-role="footer">
+			<p><small><span class="copyright">© 2015</span> <span class="author" rel="author">Thorsten Schleppi</span>, <span class="version">Version 0.&beta;</span></small></p>
+		</footer>
+	</body>
+</html>

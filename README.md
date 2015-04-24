@@ -11,3 +11,5 @@ Fehler, Kritik, Anregungen und Sonstiges gerne direkt [an den Autor](http://thor
 Es gilt die [MIT-Lizenz](http://de.wikipedia.org/wiki/MIT-Lizenz).
 
 Online Verfügbar unter: [braurechner.de](http://braurechner.de/)
+
+Der Braurechner wird auch [im Hobbybrauer-Forum](http://hobbybrauer.de/forum/viewtopic.php?t=3264) diskutiert/betreut.

@@ -42,6 +42,8 @@ $(function () {
             '<option value="C2F">Celsius (°C) &rArr; Fahrenheit (°F)</option>' +
             '<option value="C2K">Celsius (°C) &rArr; Kelvin (°F)</option>' +
             '<option value="' + String(0.001771845195312500) + '">dram (dr.) &rArr; Kilogramm (kg)</option>' +
+            '<option value="E2L">European Brewery Convention (EBC) &rArr; Lovibond (°L)</option>' +
+            '<option value="' + String(0.508) + '">European Brewery Convention (EBC) &rArr; Standard Reference Method (SRM)</option>' +
             '<option value="F2C">Fahrenheit (°F) &rArr; Celsius (°C)</option>' +
             '<option value="' + String(4.54609 / 16) + '">Imperial cup (Imp.cup) &rArr; Liter (l)</option>' +
             '<option value="' + String(4.54609 / 160) + '">Imperial fluid ounce (Imp.fl.oz.) &rArr; Liter (l)</option>' +
@@ -65,11 +67,13 @@ $(function () {
             '<option value="' + String(32 / 3.785411784) + '">Liter (l) &rArr; US gill (US.gi.)</option>' +
             '<option value="' + String(8 / 3.785411784) + '">Liter (l) &rArr; US pint (US.pt.)</option>' +
             '<option value="' + String(4 / 3.785411784) + '">Liter (l) &rArr; US quart (US.qt.)</option>' +
+            '<option value="L2E">Lovibond (°L) &rArr; European Brewery Convention (EBC)</option>' +
             '<option value="' + String(0.028349523125) + '">ounce/lid (oz.) &rArr; Kilogramm (kg)</option>' +
             '<option value="P2SG">Plato (°P) &rArr; Specific gravity (SG)</option>' +
             '<option value="' + String(0.453592370) + '">pound (lb./pd.) &rArr; Kilogramm (kg)</option>' +
             '<option value="' + String(0.0689475729) + '">Pound-force per square inch (psi) &rArr; Bar (bar)</option>' +
             '<option value="SG2P">Specific gravity (SG) &rArr; Plato (°P)</option>' +
+            '<option value="' + String(1.97) + '">Standard Reference Method (SRM) &rArr; European Brewery Convention (EBC)</option>' +
             '<option value="' + String(3.785411784 / 16) + '">US cup (US.cup) &rArr; Liter (l)</option>' +
             '<option value="' + String(3.785411784 / 128) + '">US fluid ounce (US.fl.oz.) &rArr; Liter (l)</option>' +
             '<option value="' + String(3.785411784) + '">US gallon (US.gal.) &rArr; Liter (l)</option>' +
@@ -138,6 +142,8 @@ $(function () {
         einheitenK2C = new CalculationNumber(),
         einheitenP2SG = new CalculationNumber(),
         einheitenSG2P = new CalculationNumber(),
+        einheitenE2L = new CalculationNumber(),
+        einheitenL2E = new CalculationNumber(),
         //pages
         pageAlkoholgehalt = new CalculationPage(),
         pageEvg = new CalculationPage(),
@@ -211,6 +217,8 @@ $(function () {
     calculationNumberList.push(einheitenK2C);
     calculationNumberList.push(einheitenP2SG);
     calculationNumberList.push(einheitenSG2P);
+    calculationNumberList.push(einheitenE2L);
+    calculationNumberList.push(einheitenL2E);
 
     // Stammwürze Brix
 	stammwuerzeBrix.identifier = 'stammwuerzeBrix';
@@ -255,7 +263,7 @@ $(function () {
     stammwuerzePlato.max = 100;
 	stammwuerzePlato.calculation = function () {
         var temp = isNaN(stammwuerzeTemperatur.value) || optionBrixPlato === 'brix' ? 20 : stammwuerzeTemperatur.value;
-		return smoothCP(temp, stammwuerzePlatoVorKorrektur.value);
+		return isNaN(stammwuerzePlatoVorKorrektur.value) ? NaN : smoothCP(temp, stammwuerzePlatoVorKorrektur.value);
 	};
 	stammwuerzePlato.addDependent(stammwuerzeTemperatur);
 	stammwuerzePlato.addDependent(stammwuerzePlatoVorKorrektur);
@@ -418,7 +426,7 @@ $(function () {
     rezensJungbier.min = 0;
     rezensJungbier.max = 12;
     rezensJungbier.calculation = function () {
-		return smoothKohlensaeureSaettigung(gaerTemperatur.value);
+		return gaerTemperatur.value >= 100 ? 0 : smoothKohlensaeureSaettigung(gaerTemperatur.value);
 	};
 	rezensJungbier.addDependent(gaerTemperatur);
 
@@ -688,6 +696,22 @@ $(function () {
         return 3338530 * (einheitenEingabe.value - 1) / (1555 + 11355 * einheitenEingabe.value);
     };
     einheitenSG2P.addDependent(einheitenEingabe);
+    // EBC nach Lovibond
+    einheitenE2L.identifier = 'einheitenE2L';
+    einheitenE2L.title = 'Umgerechneter Wert (°L)';
+    einheitenE2L.decimalPlaces = 2;
+    einheitenE2L.calculation = function () {
+        return (einheitenEingabe.value * 0.508 + 0.76) / 1.3546;
+    };
+    einheitenE2L.addDependent(einheitenEingabe);
+    // Lovibond nach EBC
+    einheitenL2E.identifier = 'einheitenL2E';
+    einheitenL2E.title = 'Umgerechneter Wert (EBC)';
+    einheitenL2E.decimalPlaces = 2;
+    einheitenL2E.calculation = function () {
+        return (1.3546 * einheitenEingabe.value - 0.76) * 1.97;
+    };
+    einheitenL2E.addDependent(einheitenEingabe);
 
     // pages
     // Alkoholgehalt
@@ -870,6 +894,8 @@ $(function () {
     pageEinheiten.addResult(einheitenK2C);
     pageEinheiten.addResult(einheitenP2SG);
     pageEinheiten.addResult(einheitenSG2P);
+    pageEinheiten.addResult(einheitenE2L);
+    pageEinheiten.addResult(einheitenL2E);
 
     // populate CalculationPage-objects
 	pageAlkoholgehalt.populate();

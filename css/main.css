@@ -151,6 +151,10 @@ dd.einheitenK2C,
 dd.einheitenP2SG,
 .label-einheitenSG2P,
 dd.einheitenSG2P,
+.label-einheitenE2L,
+dd.einheitenE2L,
+.label-einheitenL2E,
+dd.einheitenL2E,
 .optionEinheiten-C2F .label-einheitenFaktor,
 .optionEinheiten-C2F dd.einheitenFaktor,
 .optionEinheiten-C2K .label-einheitenFaktor,
@@ -171,6 +175,10 @@ dd.einheitenSG2P,
 .optionEinheiten-P2SG dd.einheitenAusgabe,
 .optionEinheiten-SG2P .label-einheitenAusgabe,
 .optionEinheiten-SG2P dd.einheitenAusgabe,
+.optionEinheiten-E2L .label-einheitenAusgabe,
+.optionEinheiten-E2L dd.einheitenAusgabe,
+.optionEinheiten-L2E .label-einheitenAusgabe,
+.optionEinheiten-L2E dd.einheitenAusgabe,
 .container-einheitenFaktor {
 	display: none;
 }
@@ -185,7 +193,11 @@ dd.einheitenSG2P,
 .optionEinheiten-P2SG .label-einheitenP2SG ,
 .optionEinheiten-P2SG dd.einheitenP2SG,
 .optionEinheiten-SG2P .label-einheitenSG2P ,
-.optionEinheiten-SG2P dd.einheitenSG2P {
+.optionEinheiten-SG2P dd.einheitenSG2P,
+.optionEinheiten-E2L .label-einheitenE2L ,
+.optionEinheiten-E2L dd.einheitenE2L,
+.optionEinheiten-L2E .label-einheitenL2E ,
+.optionEinheiten-L2E dd.einheitenL2E {
 	display: block;
 }
 

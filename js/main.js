@@ -81,7 +81,7 @@ $(function () {
             '<option value="' + String(3.785411784 / 8) + '">US pint (US.pt.) &rArr; Liter (l)</option>' +
             '<option value="' + String(3.785411784 / 4) + '">US quart (US.qt.) &rArr; Liter (l)</option>' +
             '</select>',
-        //numbers
+        // numbers
         calculationNumberList = [],
 		stammwuerzeBrix = new CalculationNumber(),
 		restextraktBrix = new CalculationNumber(),
@@ -144,7 +144,7 @@ $(function () {
         einheitenSG2P = new CalculationNumber(),
         einheitenE2L = new CalculationNumber(),
         einheitenL2E = new CalculationNumber(),
-        //pages
+        // pages
         pageAlkoholgehalt = new CalculationPage(),
         pageEvg = new CalculationPage(),
         pageBrennwert = new CalculationPage(),
@@ -812,6 +812,8 @@ $(function () {
     pageKarbonisierungSpeise.addParameter(mengeJungbier);
     pageKarbonisierungSpeise.addResult(stammwuerzePlato);
     pageKarbonisierungSpeise.addResult(restextraktPlato);
+    pageKarbonisierungSpeise.addResult(rezensJungbier);
+    pageKarbonisierungSpeise.addResult(rezensDifferenz);
     pageKarbonisierungSpeise.addResult(dichteJungbier);
     pageKarbonisierungSpeise.addResult(extraktSpeise);
     pageKarbonisierungSpeise.addResult(zusatzSpeiseLiter);
